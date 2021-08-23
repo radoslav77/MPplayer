@@ -25,3 +25,7 @@ var audio = {
 };
 
 audio.init();
+
+var songsLink = document.querySelector('.fc-media')
+
+console.log(songsLink)
