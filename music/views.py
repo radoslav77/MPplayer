@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
+
 
 # Create your views here.
 from .models import *
+from .forms import NewSong
 
 
 def index(request):
@@ -14,7 +16,17 @@ def index(request):
     return render(request, 'music/index.html', context)
 
 
-#form = Form(request.POST, request.FILES)
+def add(request):
+    if request.method == 'POST':
+        form = NewSong(request.POST, request.FILES)
+        if form.is_valid:
+            data = form.save(commit=False)
+            data.save()
 
+            return render(request, 'music/index.html', {
+                'msg': ' Song has been added to your Library '
+            })
 
-# <form action="" method="post" enctype="multipart/form-data">
+    return render(request, 'music/add.html', {
+        'form': NewSong()
+    })

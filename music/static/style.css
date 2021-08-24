@@ -7,6 +7,9 @@ html {
 body {
   margin: 0;
   font-family: 'Raleway', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 h1 {
   margin: 0;
@@ -69,6 +72,29 @@ h3 {
   position: relative;
   float: left;
 }
+
+.form-container {
+  width: 1000px;
+  justify-content: center;
+
+  margin-top: 10rem;
+  margin-left: 20rem;
+}
+
+form {
+  width: 50%;
+}
+
+label {
+  color: #fff;
+  margin-top: 1rem;
+}
+
+#btn {
+  background-color: rgb(126, 166, 189);
+  cursor: pointer;
+}
+
 .mejs__button > button:focus {
   outline: 0px dotted #999;
 }
