@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 from .models import *
-from .forms import NewSong
+from .forms import Add
 
 
 def index(request):
@@ -18,15 +18,20 @@ def index(request):
 
 def add(request):
     if request.method == 'POST':
-        form = NewSong(request.POST, request.FILES)
-        if form.is_valid:
-            data = form.save(commit=False)
-            data.save()
+        form = request.POST, request.FILES
+        print(form[1])
 
-            return render(request, 'music/index.html', {
-                'msg': ' Song has been added to your Library '
-            })
+        # data = Song(title=form.title, artist=form.artist,
+        #            image=form.image, audio_file=form.file)
+        # data.save()
+        # if form.is_valid:
+        # data = form.save(commit=False)
+        # data.save()
 
-    return render(request, 'music/add.html', {
-        'form': NewSong()
+        return render(request, 'music/index.html', {
+            'msg': ' Song has been added to your Library '
+        })
+
+    return render(request, 'music/input.html', {
+        'form': Add()
     })
