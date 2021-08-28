@@ -13,14 +13,7 @@
  </head>
  <body>
   <!-- partial:index.partial.html -->
-  <html>
-   <head>
-    <meta charset="utf-8"/>
-    <title>
-     Flat music player
-    </title>
-   </head>
-   <body>
+   <a href="{% url 'add' %}"><h4>Add song to your playList</h4></a>
       <div class="music-player">
         {% for item in page_obj %}
        <div class="cover">
