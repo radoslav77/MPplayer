@@ -1,19 +1,20 @@
 *:focus {
   outline: none;
 }
-html {
-  background: #f2f2f2;
-}
+
 body {
-  margin: 0;
-  font-family: 'Raleway', sans-serif;
+  background-color: #111;
+  font-family: 'Roboto', sans-serif;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  height: 100vh; /* vijual part of the brwser */
+  overflow: hidden; /* noscroll bars to show */
+  margin: 0;
 }
 h1 {
   margin: 0;
-  font-size: 33px;
+  font-size: 20px;
   color: #fff;
   padding: 0 10%;
 }
@@ -22,61 +23,60 @@ h3 {
   font-size: 17px;
   font-weight: 500;
   color: #ccc;
-  padding: 0 10%;
+  padding: 0 15rem;
 }
-.container {
-  display: block;
+
+/*
+#thefile {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+
+#canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
   width: 100%;
-  height: 750px;
-  margin: auto;
-  overflow: hidden;
-  background-image: url('https://mariongrandvincent.github.io/HTML-Personal-website/img-codePen/bg-music-player.jpg');
-  background-repeat: repeat;
-  background-size: cover;
+  height: 100%;
 }
+
+audio {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  width: calc(100% - 20px);
+} */
 .music-player {
   display: block;
   position: relative;
-  width: 400px;
-  height: 570px;
-  margin: auto;
-  margin-top: 6%;
+  width: 670px;
+  height: 480px;
+  margin: 4rem;
   border-radius: 0 0 10px 10px;
   background: transparent
     linear-gradient(to bottom, rgba(10, 11, 31, 0.9) 50%, rgb(10, 11, 31) 70%)
     repeat scroll 0 0;
   box-shadow: 1px 10px 20px 5px #222;
+  z-index: 1;
+  opacity: 0.7;
 }
 .cover {
-  float: left;
   width: 100%;
-  height: 66%;
+  height: 55%;
 }
 .cover img {
-  display: block;
   position: absolute;
-  top: 8%;
-  left: 14%;
-  width: 70%;
+  top: 1rem;
+  left: 6rem;
+  width: 40%;
   margin: auto;
-  text-align: center;
-}
-.titre {
-  float: left;
-  width: 100%;
-}
-.lecteur {
-  width: 100%;
-  display: block;
-  height: auto;
-  position: relative;
-  float: left;
 }
 
 .form-container {
   width: 1000px;
   justify-content: center;
-
   margin-top: 10rem;
   margin-left: 20rem;
 }
@@ -108,16 +108,18 @@ label {
   background: transparent !important;
   display: block;
   position: relative;
+  height: 2px;
 }
 .mejs__controls div {
   display: block;
   float: left;
   position: relative;
+  margin-bottom: 10%;
 }
 .mejs__controls .mejs__playpause-button {
   position: absolute !important;
-  right: 8%;
-  bottom: 95%;
+  right: 14rem;
+  top: -2.2rem;
   width: 40px;
 }
 .mejs__controls .mejs__playpause-button button {
@@ -160,8 +162,8 @@ label {
 }
 .mejs__controls .mejs__time {
   width: 100%;
-  margin-top: 7%;
-  margin-bottom: 3%;
+  margin-top: 2%;
+  margin-bottom: 7%;
   color: #fff;
   height: auto;
   padding: 0;
@@ -182,7 +184,6 @@ label {
 }
 .mejs__controls .mejs__time-rail {
   width: 100%;
-  margin: 0;
 }
 .mejs__controls .mejs__time-rail span {
   position: absolute;

@@ -21,25 +21,17 @@
     </title>
    </head>
    <body>
-    <div class="contain">
-     <div class="container">
       <div class="music-player">
         {% for item in page_obj %}
        <div class="cover">
         <img alt="" src="{{item.image.url}}"/>
        </div>
-       <div class="titre">
-        <h3>
-         {{item.artist}}
-        </h3>
-        <h1>
-         {{item.title}}
-        </h1>
-       </div>
+        <h3>{{item.artist}}</h3>
+        <h1>{{item.title}}</h1>
        <center><a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i class="fa fa-step-backward fa-2x"></i></a> &nbsp; &nbsp; &nbsp; <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i class="fa fa-step-forward fa-2x"></i></a></center>
        <div class="lecteur">
-        <audio class="fc-media" style="width: 100%;">
-         <source src="{% if item.audio_file %}
+        <audio class="fc-media" style="width: 100%;" id="source">
+         <source  src="{% if item.audio_file %}
                     {{item.audio_file.url}}
                  {% else %} 
                     {{item.audio_link}} 
@@ -49,9 +41,15 @@
        </div>
        {% endfor %}
       </div>
-     </div>
-    </div>
-   </body>
+      <!--<div id="content">
+        <input type="file" id="thefile" accept="audio/*" />
+        <canvas id="canvas"></canvas>
+        <audio id="audio" controls></audio>
+      </div>
+      <canvas id="canvas"></canvas>-->
+     
+ 
+
    {% if msg %}
    <h1>{{msg}}</h1>
    {% endif %}
