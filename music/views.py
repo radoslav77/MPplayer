@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
-
+from django.utils.datastructures import MultiValueDict
 
 # Create your views here.
 from .models import *
@@ -19,18 +19,33 @@ def index(request):
 def add(request):
     if request.method == 'POST':
         form = request.POST, request.FILES
-        print(form[1])
+        # print(form)
+        mus = []
+        for key in form:
 
-        # data = Song(title=form.title, artist=form.artist,
-        #            image=form.image, audio_file=form.file)
-        # data.save()
-        # if form.is_valid:
-        # data = form.save(commit=False)
-        # data.save()
+            mus.append(key)
 
-        return render(request, 'music/index.html', {
-            'msg': ' Song has been added to your Library '
-        })
+        print(mus)
+        if not isinstance(mus, MultiValueDict):
+            for value in mus:
+                if isinstance(value, str):
+                    mus[key] = [x.strip()
+                                for x in value.rstrip(',').split(',') if x]
+            data = MultiValueDict(mus[0])
+            music = MultiValueDict(mus[1])
+           # print(music['image'])
+           # print(music['file'])
+           # print(data['title'])
+           # print(data['artist'])
+            add_song = Song(title=data['title'], artist=data['artist'],
+                            image=music['image'], audio_file=music['file'])
+            add_song.save()
+
+        return redirect('index')
+
+        # return render(request, 'music/index.html', {
+        #    'msg': ' Song has been added to your Library '
+        # })
 
     return render(request, 'music/input.html', {
         'form': Add()
