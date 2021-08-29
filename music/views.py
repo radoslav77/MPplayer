@@ -19,13 +19,12 @@ def index(request):
 def add(request):
     if request.method == 'POST':
         form = request.POST, request.FILES
-        # print(form)
+
         mus = []
         for key in form:
 
             mus.append(key)
 
-        print(mus)
         if not isinstance(mus, MultiValueDict):
             for value in mus:
                 if isinstance(value, str):
@@ -33,19 +32,12 @@ def add(request):
                                 for x in value.rstrip(',').split(',') if x]
             data = MultiValueDict(mus[0])
             music = MultiValueDict(mus[1])
-           # print(music['image'])
-           # print(music['file'])
-           # print(data['title'])
-           # print(data['artist'])
+
             add_song = Song(title=data['title'], artist=data['artist'],
                             image=music['image'], audio_file=music['file'])
             add_song.save()
 
         return redirect('index')
-
-        # return render(request, 'music/index.html', {
-        #    'msg': ' Song has been added to your Library '
-        # })
 
     return render(request, 'music/input.html', {
         'form': Add()

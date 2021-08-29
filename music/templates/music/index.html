@@ -12,42 +12,35 @@
   <link href="{% static './style.css' %}" rel="stylesheet"/>
  </head>
  <body>
-  <!-- partial:index.partial.html -->
-   <a href="{% url 'add' %}"><h4>Add song to your playList</h4></a>
+
+   <a id="add" href="{% url 'add' %}"><h4>Add song to your playList</h4></a>
+
       <div class="music-player">
         {% for item in page_obj %}
        <div class="cover">
         <img alt="" src="{{item.image.url}}"/>
        </div>
-        <h3>{{item.artist}}</h3>
-        <h1>{{item.title}}</h1>
-       <center><a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i class="fa fa-step-backward fa-2x"></i></a> &nbsp; &nbsp; &nbsp; <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i class="fa fa-step-forward fa-2x"></i></a></center>
+         <h3>{{item.artist}}</h3>
+         <h1>{{item.title}}</h1>
+         <a href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}"><i class="fa fa-step-backward fa-2x"></i></a>
+         &nbsp; &nbsp; &nbsp; 
+          <a href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }} {% endif %}"><i class="fa fa-step-forward fa-2x"></i></a>
        <div class="lecteur">
-        <audio class="fc-media" style="width: 100%;" id="source">
-         <source  src="{% if item.audio_file %}
-                    {{item.audio_file.url}}
-                 {% else %} 
-                    {{item.audio_link}} 
-                {% endif %}" type="audio/mp3"/>
-        </audio>
-
+       
+         <audio class="fc-media" style="width: 100%;" id="audio"  src="{{item.audio_file.url}}" type="audio/mp3" ></audio>
        </div>
-       {% endfor %}
-      </div>
-      <!--<div id="content">
-        <input type="file" id="thefile" accept="audio/*" />
-        <canvas id="canvas"></canvas>
-        <audio id="audio" controls></audio>
-      </div>
-      <canvas id="canvas"></canvas>-->
+       
+      </div>  
+      <input type="file" id="thefile" accept="audio/*"  hidden value="{{item.audio_file.url}}"/>  {% endfor %}
+      <canvas id="canvas"></canvas>
+
      
  
 
-   {% if msg %}
-   <h1>{{msg}}</h1>
-   {% endif %}
-  </html>
-  <!-- partial -->
+        {% if msg %}
+        <h1>{{msg}}</h1>
+        {% endif %}
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js">

@@ -1,23 +1,22 @@
-*:focus {
-  outline: none;
-}
-
 body {
   background-color: #111;
   font-family: 'Roboto', sans-serif;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* vijual part of the brwser */
-  overflow: hidden; /* noscroll bars to show */
+  height: 100vh;
+  overflow: hidden;
   margin: 0;
 }
+
 h1 {
   margin: 0;
   font-size: 20px;
   color: #fff;
   padding: 0 10%;
 }
+
 h3 {
   margin: 0;
   font-size: 17px;
@@ -26,18 +25,22 @@ h3 {
   padding: 0 15rem;
 }
 
-a {
+.add {
   position: absolute;
   top: 20px;
   text-decoration: none;
 }
 
-/*
-#thefile {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 100;
+.fa-step-backward {
+  position: absolute;
+  bottom: 8.5rem;
+  right: 25rem;
+}
+
+.fa-step-forward {
+  position: absolute;
+  bottom: 8.5rem;
+  right: 22rem;
 }
 
 #canvas {
@@ -46,14 +49,10 @@ a {
   top: 0;
   width: 100%;
   height: 100%;
+  background-color: teal;
+  z-index: -1;
 }
 
-audio {
-  position: fixed;
-  left: 10px;
-  bottom: 10px;
-  width: calc(100% - 20px);
-} */
 .music-player {
   display: block;
   position: relative;
@@ -66,7 +65,7 @@ audio {
     repeat scroll 0 0;
   box-shadow: 1px 10px 20px 5px #222;
   z-index: 1;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .cover {
   width: 100%;
@@ -101,6 +100,8 @@ label {
   cursor: pointer;
 }
 
+/* Styling for the cdnjs mediaelementplayer*/
+
 .mejs__button > button:focus {
   outline: 0px dotted #999;
 }
@@ -125,8 +126,8 @@ label {
 
 .mejs__controls .mejs__playpause-button {
   position: absolute !important;
-  right: 14rem;
-  top: -2.2rem;
+  right: 17rem;
+  top: -1.1rem;
   width: 40px;
 }
 .mejs__controls .mejs__playpause-button button {
